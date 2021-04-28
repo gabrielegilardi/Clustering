@@ -44,7 +44,7 @@ The other PSO parameters are used with their default values (see *pso.py*).
 
 ## Examples
 
-**Example 1**
+**Example 1**: *g2*
 
 K-means using PSO, 2 clusters, 8 features, 2048 samples.
 
@@ -61,19 +61,21 @@ K-means using PSO, 2 clusters, 8 features, 2048 samples.
 # Max. error [%]: 0.473
 ```
 
-**Example 2**
+**Example 2**: *dim2*
 
 K-means using naive algorithm, 2 to 15 clusters, 2 features, 1351 samples, silhouette coefficient and Davies–Bouldin index as metrics.
 
 ![example_2](Results_Example_2.jpg)
 
-**Example 3**
+**Example 3**: *unbalance*
 
 Fuzzy C-means using PSO, 8 clusters (unbalanced), 2 features, 6500 samples.
 
 ![example_3](Results_Example_3.jpg)
 
-**Example 4** Fuzzy C-means using naive algorithm, 2 to 20 clusters, 2 features, 5000 samples, Dunn's and Kaufman's fuzzy partition coefficients as metrics.
+**Example 4**: *s3*
+
+Fuzzy C-means using naive algorithm, 2 to 20 clusters, 2 features, 5000 samples, Dunn's and Kaufman's fuzzy partition coefficients as metrics.
 
 ![example_4](Results_Example_4.jpg)
 
