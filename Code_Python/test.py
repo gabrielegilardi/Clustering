@@ -50,7 +50,7 @@ Examples
 Example 1: K-means using PSO, 2 clusters, 8 features, 2048 samples.
 
 Example 2: K-means using naive algorithm, 2 to 15 clusters, 2 features, 1351
-           samples, siluhouette coefficient and Davies–Bouldin index as metrics.
+           samples, silhouette coefficient and Davies–Bouldin index as metrics.
 
 Example 3: Fuzzy C-means using PSO, 8 clusters (unbalanced), 2 features, 6500
            samples.

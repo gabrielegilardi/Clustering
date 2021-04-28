@@ -49,20 +49,21 @@ The other PSO parameters are used with their default values (see *pso.py*).
 K-means using PSO, 2 clusters, 8 features, 2048 samples.
 
 ```python
-Cluster centers:
-[[600, 600, 600, 600, 600, 600, 600, 600],
- [500, 500, 500, 500, 500, 500, 500, 500]]
 
-Found solution:
-[[599.06 598.27 599.21 600.61 600.05 598.84 600.48 599.4 ]
- [499.76 499.45 499.9  500.92 497.64 498.66 499.48 499.39]]
+# Cluster centers:
+# [[600, 600, 600, 600, 600, 600, 600, 600],
+#  [500, 500, 500, 500, 500, 500, 500, 500]]
+
+# Found solution:
+# [[599.06 598.27 599.21 600.61 600.05 598.84 600.48 599.4 ]
+#  [499.76 499.45 499.9  500.92 497.64 498.66 499.48 499.39]]
 
 Max. error [%]: 0.473
 ```
 
 **Example 2**
 
-K-means using naive algorithm, 2 to 15 clusters, 2 features, 1351 samples, siluhouette coefficient and Davies–Bouldin index as metrics.
+K-means using naive algorithm, 2 to 15 clusters, 2 features, 1351 samples, silhouette coefficient and Davies–Bouldin index as metrics.
 
 ![example_2](Results_Example_2.jpg)
 
