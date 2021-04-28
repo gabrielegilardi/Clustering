@@ -1,105 +1,87 @@
-# Path Planning Using Particle Swarm Optimization
-
-Implementation of particle swarm optimization (PSO) for path planning when the environment is known.
+# K-means and Fuzzy C-means Clustering Using a Naive Algorithm and Particle Swarm Optimization
 
 ## Features
 
-- The code has been written and tested in Python 3.8.5.
+- The code has been written and tested in Python 3.8.8.
 
-- Four types of obstacles: circle, ellipse, convex polygon, generic polygon.
+- Two clustering methods (K-means and fuzzy C-means) and two solvers (naive algorithm and PSO).
 
-- Start position, goal position, and obstacles can be dynamically changed to simulate motion.
+- For the K-means clustering method:
 
-- Penalty function of type `1/x` with the center in the obstacle centroid.
+  - the distance from the cluster centers is assumed as clustering error;
+  - the function minimized is the sum of squared errors;
+  - the silhouette coefficient and Davies–Bouldin index are available metrics;
+  - the function *assign_data* can be used to classify new data.
 
-- To improve the execution speed, the algorithms to determine if a point is inside an obstacle have been designed to carry out the determination on all points simultaneously.
+- For the fuzzy C-means clustering method:
 
-- Points on the obstacle borders/edges are not considered inside the obstacle.
-
-- Option to run sequential tests with different initial conditions to increase the chances to find a global minimum.
+  - the weighted distance from the cluster centers is assumed as clustering error;
+  - the function minimized is the sum of (weighted) squared errors;
+  - the Dunn's and Kaufman's fuzzy partition coefficients are available metrics;
+  - the function *calc_U* can be used to classify new data.
 
 - Usage: *python test.py example*.
 
 ## Main Parameters
 
-`example` Number of the example to run (1, 2, or 3.)
-
-`start` Start coordinates.
-
-`goal` Goal coordinates.
-
-`limits` Lower and upper boundaries of the map and search space in the PSO.
-
-`nRun` Number of runs.
-
-`nPts` Number of internal points defining the spline. The number of variables is twice this number.
-
-`d` Number of segments between the spline breakpoints.
+`example` Name of the example to run (*g2*, *dim2*, *unbalance*, *s3*)
 
 `nPop`, `epochs` Number of agents (population) and number of iterations.
 
-`f_interp` Order of the spline (1st, 2nd and 3rd order, respectively.)
+`K`, `K_list` Number of clusters.
 
-`Xinit` Initial value of the variables. Set `Xinit=None` to pick them randomly. This array is organized with first the x-coordinates of all internal points and then the y-coordinates of all internal points.
+`n_rep` Number of repetitions (re-starts) in the naive algorithm.
 
-`K` Average size of each agent's group of informants. If `K=0` the entire swarm is used as agent's group of informants.
+`max_iter` Max. number of iterations in the naive algorithm.
 
-`phi` Coefficient to calculate the self-confidence coefficient and the confidence-in-others coefficient.
+`func` Name of the interface function for the PSO.
 
-`vel_fact` Velocity factor to calculate the maximum and the minimum allowed velocities.
+`m` Fuzziness coefficient in the fuzzy C-means method.
 
-`conf_type` Confinement type (on the velocities): `HY=hyperbolic`, `RB=random-back`, `MX=mixed hyeperbolic/random-back`.
+`tol` Convergency tolerance in the fuzzy C-means method.
 
-`IntVar` List of indexes specifying which variable should be treated as integer. If all variables are real set `IntVar=None`, if all variables are integer set `IntVar=all`.
-
-`normalize` Specifies if the search space should be normalized (to improve convergency).
-
-`rad` Normalized radius of the hypersphere centered on the best particle. The higher the number of other particles inside and the better is the solution.
+The other PSO parameters are used with their default values (see *pso.py*).
 
 ## Examples
 
-There are three examples, all of them using the same obstacles:
-
 **Example 1**
 
-- Multiple runs, cubic spline, optimizer initialized randomly.
+K-means using PSO, 2 clusters, 8 features, 2048 samples.
 
-- Best: run=9, L=11.20, count=0.
+```python
+Cluster centers:
+[[600, 600, 600, 600, 600, 600, 600, 600],
+ [500, 500, 500, 500, 500, 500, 500, 500]]
 
-- No obstacle violations.
+Found solution:
+[[599.06 598.27 599.21 600.61 600.05 598.84 600.48 599.4 ]
+ [499.76 499.45 499.9  500.92 497.64 498.66 499.48 499.39]]
 
-- See the code for the parameters used.
-
-![example_1](Results_Example_1.png)
+Max. error [%]: 0.473
+```
 
 **Example 2**
 
-- Multiple runs, quadratic spline, optimizer initialized with the straight line between start and goal position.
+K-means using naive algorithm, 2 to 15 clusters, 2 features, 1351 samples, siluhouette coefficient and Davies–Bouldin index as metrics.
 
-- Best: run=4, L=11.884, count=0.
-
-- Obstacle violation in run 8, 9, 13, 14, and 15.
-
-- See the code for the parameters used.
-
-![example_2](Results_Example_2.png)
+![example_2](Results_Example_2.jpg)
 
 **Example 3**
 
-- Single run, linear spline, optimizer initialized with the previous solution, start point chasing a moving goal with one obstacle (the circle) also moving.
+Fuzzy C-means using PSO, 8 clusters (unbalanced), 2 features, 6500 samples.
 
-- Path length goes from 11.53 (run 1) to 4.52 (run 65).
+![example_3](Results_Example_3.jpg)
 
-- No obstacle violations.
+**Example 4** Fuzzy C-means using naive algorithm, 2 to 20 clusters, 2 features, 5000 samples, Dunn's and Kaufman's fuzzy partition coefficients as metrics.
 
-- See the code for the parameters used.
-
-![example_3](Results_Example_3.gif)
+![example_4](Results_Example_4.jpg)
 
 ## References
 
+- [K-means clustering](https://en.wikipedia.org/wiki/K-means_clustering)
+
+- [Fuzzy C-means clustering](https://en.wikipedia.org/wiki/Fuzzy_clustering)
+
 - [PSO code](https://github.com/gabrielegilardi/PSO.git).
 
-- [Centroid calculation](http://en.wikipedia.org/wiki/Centroid).
-
-- [Points inside polygons](http://paulbourke.net/geometry/polygonmesh/).
+- [Datasets for the examples](http://cs.joensuu.fi/sipu/datasets/.)

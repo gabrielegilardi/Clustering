@@ -47,7 +47,7 @@ The other PSO parameters are used with their default values (see pso.py).
 
 Examples
 --------
-Example 1: K-means using PSO, 2 clusters, 16 features, 2048 samples.
+Example 1: K-means using PSO, 2 clusters, 8 features, 2048 samples.
 
 Example 2: K-means using naive algorithm, 2 to 15 clusters, 2 features, 1351
            samples, siluhouette coefficient and Davies–Bouldin index as metrics.
@@ -94,10 +94,10 @@ np.random.seed(1294404794)
 # Example 1: K-means using PSO and with a fixed number of clusters
 if (example == 'g2'):
 
-    # Dataset: 2 clusters, 16 features, 2048 samples
-    # Cluster centers: [[500, 500, 500, ....., 500],
-    #                   [600, 600, 600, ....., 600]]
-    # File g2-16-50.txt from the G2 set
+    # Dataset: 2 clusters, 8 features, 2048 samples
+    # Cluster centers: [[600, 600, 600, 600, 600, 600, 600, 600],
+    #                   [500, 500, 500, 500, 500, 500, 500, 500]]
+    # File g2-8-50.txt from the G2 set
     # http://cs.joensuu.fi/sipu/datasets/g2-txt.zip
 
     # Parameters
@@ -107,7 +107,7 @@ if (example == 'g2'):
     epochs = 100
 
     # Load data
-    X = np.loadtxt('g2-16-50.csv', delimiter=',')
+    X = np.loadtxt('g2-8-50.csv', delimiter=',')
     n_samples, n_features = X.shape
 
     # Normalize
@@ -123,14 +123,16 @@ if (example == 'g2'):
     print(info[0])
     means = theta.reshape(K, n_features)
 
-    # Solution (SSE = 16259.491)
+    # Solution (SSE = 8143.502)
     print("\nSSE:", np.around(info[0], 3))
     means = mu + sigma * means
     print("\nCluster centers:")
+    # [[599.06 598.27 599.21 600.61 600.05 598.84 600.48 599.4 ]
+    #  [499.76 499.45 499.9  500.92 497.64 498.66 499.48 499.39]]
     print(np.around(means, 2))
 
-    # Max. error with respect to actual solution (max. error = 0.798 %)
-    sol = np.tile(np.array([[500], [600]]), (1, 16))
+    # Max. error with respect to actual solution (max. error = 0.473 %)
+    sol = np.tile(np.array([[600], [500]]), (1, 8))
     max_err = 100 * np.max(np.abs((means - sol) / sol))
     print("\nMax. error [%]:", np.around(max_err, 3))
 
@@ -188,7 +190,7 @@ elif (example == 'dim2'):
     plt.plot(means[:, 0], means[:, 1], 'X', c='k')
     plt.xlabel("Feature 1")
     plt.ylabel("Feature 2")
-    plt.title("Cluster centers (normalized values) for K = 9")
+    plt.title("Clusters (normalized values) for K = 9")
     plt.xlim(-2, 1.5)
     plt.ylim(-2.5, 1.5)
     plt.grid(b=True)
@@ -240,7 +242,7 @@ elif (example == 'unbalance'):
     plt.plot(means[:, 0], means[:, 1], 'X', color='k')
     plt.xlabel("Feature 1")
     plt.ylabel("Feature 2")
-    plt.title("Cluster centers (highest probabilities)")
+    plt.title("Clusters (highest probabilities)")
     plt.xlim(-1, 5)
     plt.ylim(-5, 5)
     plt.grid(b=True)
@@ -307,7 +309,7 @@ elif (example == 's3'):
     plt.plot(means[:, 0], means[:, 1], 'X', color='k')
     plt.xlabel("Feature 1")
     plt.ylabel("Feature 2")
-    plt.title("Cluster centers (normalized values) for K = 15")
+    plt.title("Clusters (normalized values) for K = 15")
     plt.xlim(-2.5, 2.5)
     plt.ylim(-2.5, 2.5)
     plt.grid(b=True)
