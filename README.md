@@ -83,6 +83,6 @@ Fuzzy C-means using PSO, 8 clusters (unbalanced), 2 features, 6500 samples.
 
 - [Fuzzy C-means clustering](https://en.wikipedia.org/wiki/Fuzzy_clustering)
 
-- [PSO code](https://github.com/gabrielegilardi/PSO.git).
+- [PSO code](https://github.com/gabrielegilardi/PSO.git)
 
-- [Datasets for the examples](http://cs.joensuu.fi/sipu/datasets/.)
+- [Datasets for the examples](http://cs.joensuu.fi/sipu/datasets/)
