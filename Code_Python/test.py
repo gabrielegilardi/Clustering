@@ -66,13 +66,6 @@ References
 - Fuzzy C-means @ https://en.wikipedia.org/wiki/Fuzzy_clustering
 - PSO @ https://github.com/gabrielegilardi/PSO.git.
 - Datasets @ http://cs.joensuu.fi/sipu/datasets/.
-
-
-To do list
-----------
-- add readme
-- add in projects docs
-- add on github
 """
 
 import sys
